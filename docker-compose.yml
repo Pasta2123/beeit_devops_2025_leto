@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: tests
+    image: linux_cli_tests
+    command: ["bats", "--version"] # zde můžete změnit na konkrétní testovací příkaz
+
+  production:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: linux_cli_prod
+    command: ["-a"] # příklad: vypíše pouze IP adresy, můžete změnit dle potřeby
+  
